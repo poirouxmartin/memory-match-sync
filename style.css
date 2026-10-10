@@ -1,0 +1,61 @@
+:root { --bg: #dff4e4; --accent: #2e9e5b; --ink: #23324a; --card: #ffffff; }
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; font-family: 'Baloo 2', system-ui, sans-serif; color: var(--ink);
+  background: var(--bg); transition: background .4s;
+  display: grid; grid-template-columns: 1fr; grid-template-rows: auto 1fr;
+}
+body[data-role="therapist"] { grid-template-columns: 300px 1fr; }
+body[data-role="therapist"] .bar { grid-column: 1 / -1; }
+body[data-role="student"] .therapist-only { display: none !important; }
+
+.bar { display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  padding: 10px 18px; background: rgba(255,255,255,.85); box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+.title { font-weight: 800; font-size: 1.4rem; }
+.theme-chip { margin-left: 8px; font-size: .9rem; padding: 2px 10px; border-radius: 99px; background: var(--accent); color: #fff; }
+.stats b { color: var(--accent); }
+.status { font-size: .9rem; padding: 3px 10px; border-radius: 99px; background: #f3d6d6; }
+.status[data-ok="true"] { background: #cdeed6; }
+
+.panel { background: rgba(255,255,255,.9); padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.panel h2 { margin: 0; font-size: 1.1rem; }
+.panel label { display: flex; flex-direction: column; gap: 4px; font-size: .9rem; }
+.row { display: flex; gap: 8px; }
+input, select { font: inherit; padding: 6px 8px; border: 2px solid #ccd; border-radius: 10px; min-width: 0; flex: 1; }
+button { font: inherit; font-weight: 700; padding: 6px 14px; border: 0; border-radius: 12px; cursor: pointer;
+  background: var(--accent); color: #fff; box-shadow: 0 3px 0 rgba(0,0,0,.2); }
+button:active { transform: translateY(2px); box-shadow: 0 1px 0 rgba(0,0,0,.2); }
+.ghost { color: var(--ink); font-weight: 700; }
+.hint { font-size: .85rem; opacity: .75; margin: 0; }
+
+main { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px; gap: 12px; }
+.word { height: 56px; font-size: 2.2rem; font-weight: 800; color: var(--ink); }
+.word.pop { animation: pop .5s ease-out; }
+@keyframes pop { 0% { transform: scale(.4); opacity: 0 } 70% { transform: scale(1.15); opacity: 1 } 100% { transform: scale(1) } }
+
+.board { display: grid; grid-template-columns: repeat(4, minmax(64px, 130px)); gap: 12px; width: 100%; justify-content: center; }
+.card { aspect-ratio: 3 / 4; padding: 0; position: relative; border-radius: 16px; background: transparent; box-shadow: none;
+  perspective: 600px; }
+.card > span { position: absolute; inset: 0; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  backface-visibility: hidden; transition: transform .35s; box-shadow: 0 4px 0 rgba(0,0,0,.18); }
+.card .back { background: var(--accent) repeating-linear-gradient(45deg, rgba(255,255,255,.15) 0 10px, transparent 10px 20px); }
+.card .front { background: var(--card); transform: rotateY(180deg); }
+.card.up .back { transform: rotateY(180deg); }
+.card.up .front { transform: rotateY(360deg); }
+.card.matched .front { outline: 4px solid var(--accent); }
+.card .emoji { font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1; }
+.card .label { font-weight: 700; color: var(--ink); }
+.card:disabled { cursor: not-allowed; filter: grayscale(.4); }
+
+.locked, .win { position: absolute; inset: auto 0 24px; margin: auto; width: fit-content; padding: 10px 20px; border-radius: 16px;
+  background: #fff; font-size: 1.3rem; font-weight: 800; box-shadow: 0 6px 20px rgba(0,0,0,.15); display: flex; gap: 14px; align-items: center; }
+[hidden] { display: none !important; }
+
+.confetti { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+.confetti span { position: absolute; top: -40px; animation: fall 2.4s ease-in forwards; }
+@keyframes fall { to { transform: translateY(110vh) rotate(540deg); } }
+
+@media (max-width: 720px) {
+  body[data-role="therapist"] { grid-template-columns: 1fr; }
+  .board { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+}

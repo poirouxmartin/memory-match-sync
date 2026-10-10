@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memory Match – shared session demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+</head>
+<body>
+  <header class="bar">
+    <div class="title">Memory Match <span class="theme-chip" id="theme-name"></span></div>
+    <div class="stats">Pairs <b id="pairs">0 / 0</b> · Moves <b id="moves">0</b></div>
+    <div class="status" id="status" data-ok="false">Connecting…</div>
+  </header>
+
+  <aside class="panel therapist-only">
+    <h2>Therapist controls</h2>
+    <label>Invite link for the student
+      <span class="row"><input id="invite" readonly value="Creating session…"><button id="copy">Copy</button></span>
+    </label>
+    <a id="open-student" class="ghost" target="_blank" rel="noopener">Open student view in a new tab ↗</a>
+    <label>Theme (content loaded from JSON)
+      <select id="theme"></select>
+    </label>
+    <div class="row">
+      <button id="reset">New round</button>
+      <button id="lock">Lock student</button>
+    </div>
+    <p class="hint">You are the host: every move is validated here and broadcast to the student. Reload the student tab mid-game: it resyncs instantly.</p>
+  </aside>
+
+  <main>
+    <div id="word" class="word" aria-live="polite"></div>
+    <div id="board" class="board"></div>
+    <div id="locked-banner" class="locked" hidden>⏸ Your therapist paused the game</div>
+    <div id="win" class="win" hidden>
+      <div>🎉 All pairs found!</div>
+      <button id="again" class="therapist-only">Play again</button>
+    </div>
+  </main>
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

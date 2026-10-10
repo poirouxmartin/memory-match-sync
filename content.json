@@ -1,0 +1,46 @@
+{
+  "themes": [
+    {
+      "id": "animals",
+      "title": "Animals",
+      "background": "#dff4e4",
+      "accent": "#2e9e5b",
+      "items": [
+        { "id": "cat", "label": "cat", "emoji": "🐱" },
+        { "id": "dog", "label": "dog", "emoji": "🐶" },
+        { "id": "frog", "label": "frog", "emoji": "🐸" },
+        { "id": "lion", "label": "lion", "emoji": "🦁" },
+        { "id": "pig", "label": "pig", "emoji": "🐷" },
+        { "id": "rabbit", "label": "rabbit", "emoji": "🐰" }
+      ]
+    },
+    {
+      "id": "space",
+      "title": "Space",
+      "background": "#1d2550",
+      "accent": "#f5c542",
+      "items": [
+        { "id": "rocket", "label": "rocket", "emoji": "🚀" },
+        { "id": "moon", "label": "moon", "emoji": "🌙" },
+        { "id": "star", "label": "star", "emoji": "⭐" },
+        { "id": "planet", "label": "planet", "emoji": "🪐" },
+        { "id": "sun", "label": "sun", "emoji": "☀️" },
+        { "id": "alien", "label": "alien", "emoji": "👽" }
+      ]
+    },
+    {
+      "id": "food",
+      "title": "Food",
+      "background": "#fff1dc",
+      "accent": "#e0702b",
+      "items": [
+        { "id": "apple", "label": "apple", "emoji": "🍎" },
+        { "id": "pizza", "label": "pizza", "emoji": "🍕" },
+        { "id": "carrot", "label": "carrot", "emoji": "🥕" },
+        { "id": "banana", "label": "banana", "emoji": "🍌" },
+        { "id": "cookie", "label": "cookie", "emoji": "🍪" },
+        { "id": "grapes", "label": "grapes", "emoji": "🍇" }
+      ]
+    }
+  ]
+}
